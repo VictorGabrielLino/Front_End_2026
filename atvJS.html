@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Meu Bichinho</title>
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+
+<body id="body"
+class="relative min-h-screen flex items-center justify-center m-0 p-0 overflow-hidden"
+style="background-image: url('./imagensJS/fundo.png'); background-size: cover; background-position: center;">
+
+<!-- PERFIL -->
+<div class="absolute top-4 left-4 flex items-center gap-4 bg-base-100/60 p-2 pr-6 rounded-full backdrop-blur-md shadow-xl">
+
+<div class="avatar">
+<div class="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+<img src="./imagensJS/Criatura fofinha de pelúcia verde menta.png">
+</div>
+</div>
+
+<div class="flex flex-col">
+<span class="text-lg font-bold text-neutral">Cleverson</span>
+<div class="badge badge-success badge-sm text-white">Online</div>
+</div>
+
+</div>
+
+<!-- BOTÃO DIA/NOITE -->
+<div class="absolute top-4 right-4 z-50">
+
+<label class="swap swap-rotate btn btn-circle btn-ghost bg-base-100/50">
+
+<input type="checkbox" id="theme-toggle" onclick="mudarClima()"/>
+
+<!-- SOL -->
+<svg class="swap-on fill-current w-8 h-8 text-yellow-500"
+xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 24 24">
+<path d="M12 6.5A5.5 5.5 0 1 0 17.5 12 5.51 5.51 0 0 0 12 6.5z"/>
+</svg>
+
+<!-- LUA -->
+<svg class="swap-off fill-current w-8 h-8 text-indigo-700"
+xmlns="http://www.w3.org/2000/svg"
+viewBox="0 0 24 24">
+<path d="M21.64 13a1 1 0 0 0-1.05-.14 8.05 8.05 0 0 1-3.37.73A8.15 8.15 0 0 1 9.08 5.49"/>
+</svg>
+
+</label>
+</div>
+
+<!-- BICHINHO -->
+<div class="flex flex-col items-center gap-12">
+
+<div class="w-[500px]">
+
+<img id="main"
+src="./imagensJS/Criatura fofinha de pelúcia verde menta.png"
+class="w-full h-auto drop-shadow-2xl transition-all duration-500"
+alt="Bichinho">
+
+</div>
+
+<!-- BOTÃO ALIMENTAR -->
+<button onclick="alimentando()"
+class="hover:scale-110 active:scale-95 transition-transform duration-200 cursor-pointer">
+
+<img id="btn"
+src="./imagensJS/manga.png"
+class="w-32 md:w-40"
+alt="Manga">
+
+</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
