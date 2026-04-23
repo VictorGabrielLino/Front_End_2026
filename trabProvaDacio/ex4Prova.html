@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Copa do Mundo 2026</title>
+
+    <!-- CSS (Questão 2) -->
+    <style>
+        body {
+            background-color: #e8f5e9;
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+
+        nav {
+            background: #c8e6c9;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+            color: #1b5e20;
+        }
+
+        .secao {
+            background-color: #ffffff;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .secao h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2e7d32;
+            text-align: center;
+        }
+
+        .secao p {
+            font-size: 16px;
+            text-align: justify;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #1b5e20;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 15px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            background-color: #2e7d32;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1b5e20;
+        }
+
+        /* Questão 4 */
+        .card-text {
+            font-weight: bold;
+            color: #1b5e20;
+        }
+
+        .placeholder {
+            color: gray;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Informações sobre a Copa do Mundo 2026</h1>
+
+    <!-- Navegação -->
+    <nav>
+        <a href="#organizacao">Organização</a>
+        <a href="#formato">Formato</a>
+        <a href="#impacto">Impacto</a>
+    </nav>
+
+    <!-- Seções -->
+    <section id="organizacao" class="secao">
+        <h2>🌍 Organização e Sedes</h2>
+        <p>
+            A Copa do Mundo de 2026 será realizada em três países:
+            Estados Unidos, Canadá e México.
+        </p>
+    </section>
+
+    <section id="formato" class="secao">
+        <h2>⚽ Novo Formato</h2>
+        <p>
+            O torneio contará com 48 seleções, ampliando a competição
+            e o número de jogos.
+        </p>
+    </section>
+
+    <section id="impacto" class="secao">
+        <h2>🏆 Impacto</h2>
+        <p>
+            A competição terá grande impacto econômico e cultural global.
+        </p>
+    </section>
+
+    <!-- Botão Questão 3 -->
+    <button onclick="mostrarTabela()">Mostrar Tabela de Jogos</button>
+
+    <!-- QUESTÃO 4 -->
+    <hr>
+
+    <h2 style="text-align:center;">Perfil do Jogador</h2>
+
+    <div style="text-align:center;">
+        <button onclick="revelar()">Revelar</button>
+    </div>
+
+    <img id="imagemJogador" src="img/placeholder.png"
+         style="display:block; margin:20px auto; max-width:300px; border-radius:10px;">
+
+    <p>Nome: <span id="nome" class="placeholder">---</span></p>
+    <p>Nascimento: <span id="nascimento" class="placeholder">---</span></p>
+    <p>Altura: <span id="altura" class="placeholder">---</span></p>
+    <p>Posição: <span id="posicao" class="placeholder">---</span></p>
+    <p>Rank: <span id="rank" class="placeholder">---</span></p>
+
+    <!-- JavaScript (Questão 3 + 4) -->
+    <script>
+        // QUESTÃO 3
+        function mostrarTabela() {
+
+            if (document.getElementById("imgVini")) {
+                return;
+            }
+
+            var img = document.createElement("img");
+            img.src = "https://raw.githubusercontent.com/ProfDacioMachado/PROGRAMA-O-FRONT-END-2026-/main/PROVAS/DIA%203/img/_vinicius_junior.png";
+            img.id = "imgVini";
+            img.alt = "Vinicius Junior";
+
+            img.style.display = "block";
+            img.style.margin = "20px auto";
+            img.style.maxWidth = "300px";
+            img.style.borderRadius = "10px";
+
+            document.body.appendChild(img);
+        }
+
+        // QUESTÃO 4
+        function revelar() {
+
+            // troca imagem
+            document.getElementById("imagemJogador").src =
+                "img/_vinicius_junior.png";
+
+            // troca textos
+            document.getElementById("nome").textContent =
+                "Vinícius José Paixão de Oliveira Júnior";
+
+            document.getElementById("nascimento").textContent =
+                "12/07/2000 (25 anos)";
+
+            document.getElementById("altura").textContent =
+                "1,76 m";
+
+            document.getElementById("posicao").textContent =
+                "Ponta-esquerda / Atacante";
+
+            document.getElementById("rank").textContent =
+                "9,5";
+
+            // remove placeholder e aplica card-text
+            let elementos = document.querySelectorAll(".placeholder");
+
+            elementos.forEach(el => {
+                el.classList.remove("placeholder");
+                el.classList.add("card-text");
+            });
+        }
+    </script>
+
+</body>
+</html>
