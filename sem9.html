@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Laboratório de Programação FrontEnd</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 30px;
+      font-size: 0.9rem;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin-bottom: 24px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+    .form-group {
+      margin-bottom: 12px;
+    }
+    label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    input, select, button {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      width: 100%;
+    }
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    .result {
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 500;
+    }
+    .success {
+      background: #d4edda;
+      color: #155724;
+    }
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+    }
+    .info {
+      background: #d1ecf1;
+      color: #0c5460;
+    }
+    .inputs-inline {
+      display: flex;
+      gap: 10px;
+    }
+    .inputs-inline > * {
+      flex: 1;
+    }
+    .guest-list {
+      margin-top: 10px;
+      list-style: none;
+      padding: 0;
+    }
+    .guest-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .guest-buttons {
+      display: flex;
+      gap: 6px;
+      margin-left: auto;
+    }
+    .btn-sm {
+      padding: 4px 8px;
+      font-size: 0.85rem;
+      margin: 0;
+    }
+    .btn-done {
+      background: #28a745;
+    }
+    .btn-edit {
+      background: #f39c12;
+    }
+    .btn-delete {
+      background: #dc3545;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .strikethrough {
+      text-decoration: line-through;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Laboratório de Programação FrontEnd</h1>
+  <p class="subtitle">Exercícios de Fixação: Lógica e Manipulação de DOM</p>
+
+  <!-- Exercício 01: Validador de CPF -->
+  <div class="card">
+    <h2>⚡ Exercício 01 – Validador de CPF</h2>
+
+    <div class="form-group">
+      <label>CPF (11 dígitos, apenas números):</label>
+      <input type="text" id="cpfInput" placeholder="Digite seu CPF" />
+    </div>
+
+    <button id="cpfValidateBtn">Validar</button>
+
+    <div id="cpfResult" class="result" style="display: none;"></div>
+  </div>
+
+  <!-- Exercício 02: Conversor Dinâmico (C ↔ F) -->
+  <div class="card">
+    <h2>🌡️ Exercício 02 – Conversor Dinâmico (C ↔ F)</h2>
+
+    <div class="inputs-inline">
+      <div class="form-group">
+        <label>Celsius (°C):</label>
+        <input type="number" id="celsiusInput" placeholder="Ex: 25" step="0.1" />
+      </div>
+      <div class="form-group">
+        <label>Fahrenheit (°F):</label>
+        <input type="number" id="fahrenheitInput" placeholder="Ex: 77" step="0.1" />
+      </div>
+    </div>
+
+    <p class="info">Ao digitar, o outro campo é atualizado automaticamente (2 casas decimais).</p>
+  </div>
+
+  <!-- Exercício 03: Média Escolar -->
+  <div class="card">
+    <h2>🎓 Exercício 03 – Média Escolar</h2>
+
+    <div class="form-group">
+      <label>Nome do aluno:</label>
+      <input type="text" id="studentNameInput" placeholder="Ex: João Silva" />
+    </div>
+
+    <div class="inputs-inline">
+      <div class="form-group">
+        <label>Nota 1:</label>
+        <input type="number" id="grade1Input" min="0" max="10" step="0.01" />
+      </div>
+      <div class="form-group">
+        <label>Nota 2:</label>
+        <input type="number" id="grade2Input" min="0" max="10" step="0.01" />
+      </div>
+      <div class="form-group">
+        <label>Nota 3:</label>
+        <input type="number" id="grade3Input" min="0" max="10" step="0.01" />
+      </div>
+    </div>
+
+    <button id="calculateGradeBtn">Calcular Média</button>
+
+    <div id="gradeResult" class="result" style="display: none;"></div>
+  </div>
+
+  <!-- Exercício 04: Taxas Infinity Bank -->
+  <div class="card">
+    <h2>💳 Exercício 04 – Taxas Infinity Bank</h2>
+
+    <div class="form-group">
+      <label>Bandeira:</label>
+      <select id="cardBand">
+        <option value="visa">Visa (2%)</option>
+        <option value="master">Master (1.85%)</option>
+        <option value="elo">Elo (3%)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Valor da venda (R$):</label>
+      <input type="number" id="saleAmountInput" step="0.01" placeholder="Ex: 1000" />
+    </div>
+
+    <div class="form-group">
+      <label>Número de parcelas:</label>
+      <input type="number" id="installmentsInput" min="1" max="12" value="1" />
+    </div>
+
+    <button id="calculateFeesBtn">Simular</button>
+
+    <div id="feesResult" class="result" style="display: none;">
+      <p><strong>Valor da Taxa:</strong> <span id="taxOutput"></span></p>
+      <p><strong>Valor dos Juros:</strong> <span id="interestOutput"></span></p>
+      <p><strong>Valor de cada parcela:</strong> <span id="installmentOutput"></span></p>
+    </div>
+  </div>
+
+  <!-- Exercício 05: Gestão de Convidados VIP -->
+  <div class="card">
+    <h2>👥 Exercício 05 – Lista de Convidados VIP</h2>
+
+    <div class="form-group">
+      <label>Nome do convidado:</label>
+      <input type="text" id="guestInput" placeholder="Ex: Maria Oliveira" />
+    </div>
+
+    <button id="addGuestBtn">Adicionar convidado</button>
+
+    <ul id="guestList" class="guest-list"></ul>
+  </div>
+
+  <!-- Exercício 06: Crédito para Festas & Eventos -->
+  <div class="card">
+    <h2>🎉 Exercício 06 – Crédito para Festas & Eventos</h2>
+
+    <div class="form-group">
+      <label>Pacote:</label>
+      <select id="packageSelect">
+        <option value="standard">Standard (R$ 50,00/pessoa)</option>
+        <option value="premium">Premium (R$ 80,00/pessoa)</option>
+        <option value="deluxe">Infinity Deluxe (R$ 120,00/pessoa)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Quantidade de pessoas:</label>
+      <input type="number" id="guestsCountInput" min="1" value="1" />
+    </div>
+
+    <button id="calculateBudgetBtn">Calcular Orçamento</button>
+
+    <div id="budgetResult" class="result" style="display: none;">
+      <p><strong>Custo bruto:</strong> <span id="baseCostOutput"></span></p>
+      <p><strong>Taxa de serviço (10%):</strong> <span id="serviceFeeOutput"></span></p>
+      <p><strong>Desconto (se aplicável):</strong> <span id="discountOutput"></span></p>
+      <p><strong>Total final:</strong> <span id="totalOutput"></span></p>
+    </div>
+  </div>
+
+  <!-- Exercício 07: Validador de Segurança Infinity (Luhn) -->
+  <div class="card">
+    <h2>🛡️ Exercício 07 – Validador de Segurança Infinity</h2>
+
+    <div class="form-group">
+      <label>Número do cartão (13–16 dígitos):</label>
+      <input type="text" id="cardInput" placeholder="Ex: 1234 5678 9012 3456" />
+    </div>
+
+    <button id="analyzeCardBtn">Analisar Cartão</button>
+
+    <div id="cardInfo" class="result" style="display: none;">
+      <p><strong>Status:</strong> <span id="cardStatus"></span></p>
+      <p><strong>Bandeira:</strong> <span id="cardBrand"></span></p>
+      <p><strong>Categoria de Setor:</strong> <span id="sectorCategory"></span></p>
+      <p><strong>Banco Emissor (simulado):</strong> <span id="issuerBank"></span></p>
+    </div>
+  </div>
+
+  <script>
+    // Exercício 01: Validar CPF
+    function validaCPF(cpf) {
+      cpf = cpf.replace(/\D/g, '');
+      if (cpf.length !== 11) return false;
+
+      let sum = 0;
+      let factor = 10;
+
+      // 1º dígito verificador
+      for (let i = 0; i < 9; i++) {
+        sum += Number(cpf[i]) * factor--;
+      }
+      let resto = (sum * 10) % 11;
+      if (resto === 10) resto = 0;
+      if (resto !== Number(cpf[9])) return false;
+
+      // 2º dígito verificador
+      sum = 0;
+      factor = 11;
+      for (let i = 0; i < 10; i++) {
+        sum += Number(cpf[i]) * factor--;
+      }
+      resto = (sum * 10) % 11;
+      if (resto === 10) resto = 0;
+      if (resto !== Number(cpf[10])) return false;
+
+      return true;
+    }
+
+    const cpfInput = document.getElementById('cpfInput');
+    const cpfValidateBtn = document.getElementById('cpfValidateBtn');
+    const cpfResult = document.getElementById('cpfResult');
+
+    cpfValidateBtn.addEventListener('click', () => {
+      const value = cpfInput.value.trim();
+      if (!value) {
+        cpfResult.textContent = 'Digite um CPF.';
+        cpfResult.className = 'result error';
+      } else {
+        if (validaCPF(value)) {
+          cpfResult.textContent = 'CPF válido';
+          cpfResult.className = 'result success';
+        } else {
+          cpfResult.textContent = 'CPF inválido';
+          cpfResult.className = 'result error';
+        }
+      }
+      cpfResult.style.display = 'block';
+    });
+
+    // Exercício 02: Conversor dinâmico C ↔ F
+    const celsiusInput = document.getElementById('celsiusInput');
+    const fahrenheitInput = document.getElementById('fahrenheitInput');
+
+    function setCelsiusFromFahrenheit() {
+      const f = parseFloat(fahrenheitInput.value);
+      if (!isNaN(f)) {
+        const c = ((f - 32) * 5) / 9;
+        celsiusInput.value = c.toFixed(2);
+      } else {
+        celsiusInput.value = '';
+      }
+    }
+
+    function setFahrenheitFromCelsius() {
+      const c = parseFloat(celsiusInput.value);
+      if (!isNaN(c)) {
+        const f = (c * 9) / 5 + 32;
+        fahrenheitInput.value = f.toFixed(2);
+      } else {
+        fahrenheitInput.value = '';
+      }
+    }
+
+    celsiusInput.addEventListener('input', setFahrenheitFromCelsius);
+    fahrenheitInput.addEventListener('input', setCelsiusFromFahrenheit);
+
+    // Exercício 03: Média escolar
+    const studentNameInput = document.getElementById('studentNameInput');
+    const grade1Input = document.getElementById('grade1Input');
+    const grade2Input = document.getElementById('grade2Input');
+    const grade3Input = document.getElementById('grade3Input');
+    const calculateGradeBtn = document.getElementById('calculateGradeBtn');
+    const gradeResult = document.getElementById('gradeResult');
+
+    calculateGradeBtn.addEventListener('click', () => {
+      const name = studentNameInput.value.trim();
+      const g1 = Number(grade1Input.value);
+      const g2 = Number(grade2Input.value);
+      const g3 = Number(grade3Input.value);
+
+      if (isNaN(g1) || isNaN(g2) || isNaN(g3) || g1 < 0 || g1 > 10 || g2 < 0 || g2 > 10 || g3 < 0 || g3 > 10) {
+        gradeResult.textContent = 'Notas inválidas.';
+        gradeResult.className = 'result error';
+        gradeResult.style.display = 'block';
+        return;
+      }
+
+      const media = ((g1 + g2 + g3) / 3).toFixed(2);
+
+      let msg;
+      let cls;
+
+      if (media >= 7.0) {
+        msg = `Aluno ${name} está APROVADO com média ${media}.`;
+        cls = 'success';
+      } else if (media >= 4.0) {
+        const falta = (10.0 - media).toFixed(2);
+        msg = `Aluno ${name} está de EXAME. Média: ${media}. Falta ${falta} para 10.`;
+        cls = 'info';
+      } else {
+        msg = `Aluno ${name} está REPROVADO. Média: ${media}.`;
+        cls = 'error';
+      }
+
+      gradeResult.textContent = msg;
+      gradeResult.className = 'result ' + cls;
+      gradeResult.style.display = 'block';
+    });
+
+    // Exercício 04: Taxas Infinity Bank
+    const cardBandSelect = document.getElementById('cardBand');
+    const saleAmountInput = document.getElementById('saleAmountInput');
+    const installmentsInput = document.getElementById('installmentsInput');
+    const calculateFeesBtn = document.getElementById('calculateFeesBtn');
+    const taxOutput = document.getElementById('taxOutput');
+    const interestOutput = document.getElementById('interestOutput');
+    const installmentOutput = document.getElementById('installmentOutput');
+    const feesResult = document.getElementById('feesResult');
+
+    calculateFeesBtn.addEventListener('click', () => {
+      const band = cardBandSelect.value;
+      const amount = Number(saleAmountInput.value);
+      const installments = Number(installmentsInput.value);
+
+      if (isNaN(amount) || amount <= 0 || isNaN(installments) || installments < 1) {
+        alert('Preencha valores válidos.');
+        return;
+      }
+
+      let taxRate;
+      switch (band) {
+        case 'visa':
+          taxRate = 0.02;
+          break;
+        case 'master':
+          taxRate = 0.0185;
+          break;
+        case 'elo':
+          taxRate = 0.03;
+          break;
+        default:
+          taxRate = 0;
+      }
+
+      const taxaBandeira = amount * taxRate;
+      const juros = amount * 0.0035 * installments; // 0.35% ao mês
+      const total = amount + taxaBandeira + juros;
+      const parcela = total / installments;
+
+      taxOutput.textContent = 'R$ ' + taxaBandeira.toFixed(2);
+      interestOutput.textContent = 'R$ ' + juros.toFixed(
